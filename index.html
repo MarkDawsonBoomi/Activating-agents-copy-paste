@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activating Agents with Integrations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .collapsible {
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .collapsible:hover {
+            filter: brightness(1.1);
+        }
+        
+        .collapsible.active {
+            background: #1d4ed8;
+        }
+        
+        .toggle-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .collapsible.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+        
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #f9f9f9;
+        }
+        
+        .content-inner {
+            padding: 20px;
+        }
+        
+        .instruction-step {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid #2563eb;
+        }
+        
+        .instruction-step p {
+            margin-bottom: 8px;
+        }
+        
+        .instruction-step ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .instruction-step li {
+            margin-bottom: 8px;
+        }
+        
+        .copy-value {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .inline-copy-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .inline-copy-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+        }
+        
+        .inline-copy-btn:active {
+            transform: translateY(0);
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Activating Agents with Integrations</h1>
+            <p class="subtitle">Quick Copy Reference Guide</p>
+        </header>
+        
+        <div class="content">
+
+            <div class="section">
+                <button class="collapsible" onclick="toggleSection(this)">
+                    Create API Tool DC_Network
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="content-inner">
+                        
+                        <div class="instruction-step">
+                            <p>Tool Name: <strong>DC_Network</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'DC_Network')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Description: <strong>Tool for details on the Distribution Network "Transfer routes, transit times, and costs between distribution centers"</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Tool for details on the Distribution Network "Transfer routes, transit times, and costs between distribution centers"')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Endpoint Path: <strong>/ws/simple/getDC_Network</strong> <button class="inline-copy-btn" onclick="copyInline(this, '/ws/simple/getDC_Network')">Copy</button></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <button class="collapsible" onclick="toggleSection(this)">
+                    Create API Tool Business_Rules
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="content-inner">
+                        
+                        <div class="instruction-step">
+                            <p>Tool Name: <strong>Business_Rules</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Business_Rules')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Description: <strong>Return mock Business Rules</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Return mock Business Rules')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Endpoint Path: <strong>/ws/simple/getBusiness_Rules</strong> <button class="inline-copy-btn" onclick="copyInline(this, '/ws/simple/getBusiness_Rules')">Copy</button></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <button class="collapsible" onclick="toggleSection(this)">
+                    Create API Tool Inventory_Levels
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="content-inner">
+                        
+                        <div class="instruction-step">
+                            <p>Tool Name: <strong>Inventory_Levels</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Inventory_Levels')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Description: <strong>Provides Inventory Information: "Current stock levels at each distribution center"</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Provides Inventory Information: "Current stock levels at each distribution center"')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Endpoint Path: <strong>/ws/simple/getBusiness_Rules</strong> <button class="inline-copy-btn" onclick="copyInline(this, '/ws/simple/getBusiness_Rules')">Copy</button></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <button class="collapsible" onclick="toggleSection(this)">
+                    Create API Tool Orders_and_Demand
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="content-inner">
+                        
+                        <div class="instruction-step">
+                            <p>Tool Name: <strong>Orders_and_Demand</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Orders_and_Demand')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Description: <strong>"Pending orders and sales velocity by distribution center"</strong> <button class="inline-copy-btn" onclick="copyInline(this, '"Pending orders and sales velocity by distribution center"')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Endpoint Path: <strong>/ws/simple/getOrders_and_Demand</strong> <button class="inline-copy-btn" onclick="copyInline(this, '/ws/simple/getOrders_and_Demand')">Copy</button></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <button class="collapsible" onclick="toggleSection(this)">
+                    Create API Tool Supplier_Info
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="content-inner">
+                        
+                        <div class="instruction-step">
+                            <p>Tool Name: <strong>Supplier_Info</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Supplier_Info')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Description: <strong>Tool to provide information about the suppliers "Primary supplier details, lead times, and ordering constraints"</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Tool to provide information about the suppliers "Primary supplier details, lead times, and ordering constraints"')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Endpoint Path: <strong>/ws/simple/getSupplier_Info</strong> <button class="inline-copy-btn" onclick="copyInline(this, '/ws/simple/getSupplier_Info')">Copy</button></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <button class="collapsible" onclick="toggleSection(this)">
+                    Build the [Main]Distribution_Agent
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="content-inner">
+                        
+                        <div class="instruction-step">
+                            <p>Goal: <strong>You are a supply and demand forecasting and ordering agent. Use tools to determine inventory concerns, shortfalls, demand and adjustments based on forecasts and data, and make suggestions.</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'You are a supply and demand forecasting and ordering agent. Use tools to determine inventory concerns, shortfalls, demand and adjustments based on forecasts and data, and make suggestions.')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Agent Name: <strong>[Main]Distribution_Agent</strong> <button class="inline-copy-btn" onclick="copyInline(this, '[Main]Distribution_Agent')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Agent Mode: Conversational: <strong>Value</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Value')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Creativity: 35: <strong>Value</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Value')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Decisiveness: 65: <strong>Value</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Value')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Clarity: 75: <strong>Value</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Value')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Confidence: 70: <strong>Value</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Value')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Engagement: 60: <strong>Value</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Value')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Voice: Select Professional: <strong>Value</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Value')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Conversation Starters: <strong>Please give me details of supply and demand concerns for Vancouver. Can you analyze our current inventory levels and identify any potential stock shortfalls in June? Please give me data on inventory and expectations for upcoming dates in our DCs locations.</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Please give me details of supply and demand concerns for Vancouver. Can you analyze our current inventory levels and identify any potential stock shortfalls in June? Please give me data on inventory and expectations for upcoming dates in our DCs locations.')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Select Save and Continue.: <strong></strong> <button class="inline-copy-btn" onclick="copyInline(this, '')">Copy</button></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <button class="collapsible" onclick="toggleSection(this)">
+                    Adding Distribution Center Task for Main Agent
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="content-inner">
+                        
+                        <div class="instruction-step">
+                            <p>Name: <strong>Distribution Center Network</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Distribution Center Network')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Description: <strong>Distribution Center Network information retrieval</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Distribution Center Network information retrieval')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Instructions: <strong>Retrieve information from the DC_Network tool to provide context for distribution needs and analysis.</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Retrieve information from the DC_Network tool to provide context for distribution needs and analysis.')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Select Add Task: <strong></strong> <button class="inline-copy-btn" onclick="copyInline(this, '')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Test Agent (after adding tool): <strong>What are our three distribution centers and what should I know about them?</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'What are our three distribution centers and what should I know about them?')">Copy</button></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <button class="collapsible" onclick="toggleSection(this)">
+                    Adding Business Rules Task
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="content-inner">
+                        
+                        <div class="instruction-step">
+                            <p>Name: <strong>Business Rules</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Business Rules')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Description: <strong>Return the Business Rules</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Return the Business Rules')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Instructions: <strong>Return the business rules and use the logic found within to make suggestions on what is required by the query.</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Return the business rules and use the logic found within to make suggestions on what is required by the query.')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Select Add Task: <strong></strong> <button class="inline-copy-btn" onclick="copyInline(this, '')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Test Agent (after adding tool): <strong>please outline our business rules</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'please outline our business rules')">Copy</button></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <button class="collapsible" onclick="toggleSection(this)">
+                    Adding Supplier Info Task
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="content-inner">
+                        
+                        <div class="instruction-step">
+                            <p>Name: <strong>Supplier Info</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Supplier Info')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Description: <strong>Return Supplier info</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Return Supplier info')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Instructions: <strong>Return our Supplier information and use the logic found within to make suggestions on what is required by the query.</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Return our Supplier information and use the logic found within to make suggestions on what is required by the query.')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Select Add Task.: <strong></strong> <button class="inline-copy-btn" onclick="copyInline(this, '')">Copy</button></p>
+                        </div>
+                        <div class="instruction-step">
+                            <p>Test Agent (after adding tool): <strong>Tell me about supplier lead times and ordering constraints</strong> <button class="inline-copy-btn" onclick="copyInline(this, 'Tell me about supplier lead times and ordering constraints')">Copy</button></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="toast" class="toast">Copied to clipboard!</div>
+    
+    <script>
+        function toggleSection(element) {
+            element.classList.toggle("active");
+            const content = element.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        }
+        
+        function copyInline(button, text) {
+            navigator.clipboard.writeText(text).then(function() {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                showToast();
+                setTimeout(function() {
+                    button.textContent = originalText;
+                }, 2000);
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+        
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(function() {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+        
+        // Open all sections by default
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.collapsible').forEach(function(collapsible) {
+                collapsible.click();
+            });
+        });
+    </script>
+</body>
+</html>
