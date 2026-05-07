@@ -49,6 +49,12 @@
             opacity: 0; transform: translateY(20px); transition: all 0.3s ease; pointer-events: none; z-index: 1000;
         }
         .toast.show { opacity: 1; transform: translateY(0); }
+        .info-notice {
+            margin-top: 10px; padding: 20px 24px;
+            background: #eff6ff; border: 1px solid #bfdbfe;
+            border-radius: 8px; text-align: center;
+            color: #1e40af; font-size: 1em; font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -332,6 +338,10 @@
             </div></div>
         </div>
 
+        <div class="info-notice">
+            Due to the more in-depth nature of the rest of the tools, please follow along in the activity guide and copy/paste from there when necessary.
+        </div>
+
     </div>
 </div>
 <div id="toast" class="toast">Copied to clipboard!</div>
@@ -355,7 +365,6 @@
         toast.classList.add('show');
         setTimeout(function() { toast.classList.remove('show'); }, 2000);
     }
-
 </script>
 </body>
 </html>
